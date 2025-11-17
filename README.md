@@ -73,6 +73,11 @@ La aplicación expone la API en `http://localhost:8000/api/*` y sirve la interfa
 ## Próximos pasos sugeridos
 
 1. Conectar la API con Google Sheets usando `gspread` o la API oficial para mantener sincronización con hojas existentes.
-2. Añadir autenticación para limitar quién puede registrar actividades.
-3. Desplegar en un servicio gestionado (Railway, Render, Fly.io, etc.).
-4. Construir dashboards adicionales a partir del endpoint `/api/summary`.
+2. Añadir autenticación para limitar quién puede registrar actividades (OAuth de Google, contraseñas o integración con Strava).
+3. Desplegar en un servicio gestionado (Railway, Render, Fly.io, etc.) y configurar HTTPS automático.
+4. Construir dashboards adicionales a partir del endpoint `/api/summary` o consumir la API desde herramientas BI.
+5. Convertir la interfaz en PWA y generar exportaciones CSV/Excel para reportes offline.
+
+## Documentación ampliada
+
+- [Manual paso a paso de implementación y uso](docs/MANUAL_IMPLEMENTACION_Y_USO.md): guía detallada para preparar el entorno, ejecutar la app, registrar actividades, probar el login con Strava y aplicar las mejoras recomendadas.
