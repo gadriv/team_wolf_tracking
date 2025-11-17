@@ -30,16 +30,19 @@ La aplicación expone la API en `http://localhost:8000/api/*` y sirve la interfa
 
 1. Crea una aplicación en [https://www.strava.com/settings/api](https://www.strava.com/settings/api).
 2. Define como **Authorization Callback Domain** la URL de tu backend (por ejemplo `localhost` o el dominio público si ya está desplegado).
-3. Copia el `Client ID` y `Client Secret` generados y crea un archivo `.env` en la raíz con el siguiente contenido:
+3. Copia el `Client ID` y `Client Secret` generados y duplíca el archivo `.env.example` ubicado en la raíz del proyecto:
 
-   ```env
-   STRAVA_CLIENT_ID=tu_id
-   STRAVA_CLIENT_SECRET=tu_secret
-   STRAVA_REDIRECT_URI=http://localhost:8000/api/auth/strava/callback  # ajusta si expones otro host/puerto
-   STRAVA_SCOPE=read,activity:read,profile:read_all  # opcional
+   ```bash
+   cp .env.example .env
    ```
 
-4. Reinicia `uvicorn` para que cargue las nuevas variables (el proyecto utiliza `python-dotenv`).
+   Edita `.env` y reemplaza los valores por los datos reales que te entregó Strava (por ejemplo el `Client Secret` `dee859205f14967862b3062a256b47f17e1624d3`). **Nunca subas este archivo al repositorio**.
+
+4. (Opcional) Actualiza `STRAVA_REDIRECT_URI` si expones la aplicación en otro host/puerto y ajusta `STRAVA_SCOPE` según el alcance requerido (con el alcance `read` que compartiste es suficiente para validar la sesión).
+
+5. Reinicia `uvicorn` para que cargue las nuevas variables (el proyecto utiliza `python-dotenv`).
+
+> ℹ️ No necesitas configurar manualmente el *access token* ni el *refresh token* (`b88a316abcee3ffff2ec0aa5675967a7dbd7a3e6` / `36e63e9526e0b31fc80d1087bd40354e599672e2`). Al completar el inicio de sesión, la API los guardará automáticamente en `team_wolf_tracking.db` y los refrescará cuando caduquen.
 
 ### Probar el inicio de sesión con Strava
 

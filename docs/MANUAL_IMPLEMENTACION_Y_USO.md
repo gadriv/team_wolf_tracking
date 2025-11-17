@@ -38,15 +38,22 @@ Este documento describe, en español y con instrucciones detalladas, cómo despl
 
 1. Regístrate en [https://www.strava.com/settings/api](https://www.strava.com/settings/api) y crea una nueva aplicación.
 2. Define como **Authorization Callback Domain** el dominio (o IP) donde correrá tu backend.
-3. Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido (ajusta los valores):
-   ```env
-   STRAVA_CLIENT_ID=tu_id
-   STRAVA_CLIENT_SECRET=tu_secret
-   STRAVA_REDIRECT_URI=http://localhost:8000/api/auth/strava/callback
-   STRAVA_SCOPE=read,activity:read,profile:read_all
+3. Duplica el archivo `.env.example` incluido en la raíz del repositorio y renómbralo a `.env`:
+   ```bash
+   cp .env.example .env
    ```
-4. Si despliegas en producción, añade también variables para el host/puerto (ej. `PORT=80`).
-5. Reinicia el servidor cada vez que actualices el archivo `.env` para cargar los nuevos valores.
+4. Abre `.env` y pega los valores reales provistos por Strava. Por ejemplo:
+   ```env
+   STRAVA_CLIENT_ID=123456
+   STRAVA_CLIENT_SECRET=dee859205f14967862b3062a256b47f17e1624d3
+   STRAVA_REDIRECT_URI=http://localhost:8000/api/auth/strava/callback
+   STRAVA_SCOPE=read
+   ```
+   - Usa el `Client ID` y `Client Secret` de tu app.
+   - El alcance `read` que compartiste es suficiente para validar el inicio de sesión; puedes ampliarlo si luego importas actividades.
+   - Los *access/refresh tokens* (`b88a316abcee3ffff2ec0aa5675967a7dbd7a3e6` / `36e63e9526e0b31fc80d1087bd40354e599672e2`) **no van en el `.env`**: se obtienen y almacenan automáticamente cuando completes el flujo de login.
+5. Si despliegas en producción, añade también variables para el host/puerto (ej. `PORT=80`).
+6. Reinicia el servidor cada vez que actualices el archivo `.env` para cargar los nuevos valores.
 
 ## 5. Inicializar la base de datos
 
