@@ -27,6 +27,28 @@ section {
   margin-top: 0;
 }
 
+.auth-panel {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+button.strava-button {
+  background: #fc4c02;
+}
+
+button.strava-button:hover {
+  background: #dd3f00;
+}
+
+.strava-message {
+  min-height: 1.25rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -10,6 +10,11 @@
     <main class="layout">
       <section class="form-panel">
         <h1>Registro de actividades</h1>
+        <div class="auth-panel">
+          <p>Conecta tu cuenta para usar tus datos de Strava.</p>
+          <button type="button" id="strava-login" class="strava-button">Conectar con Strava</button>
+          <p class="strava-message" id="strava-message"></p>
+        </div>
         <form id="activity-form">
           <label>Nombre del atleta<input name="athlete_name" required /></label>
           <label>Tipo de actividad<input name="activity_type" required /></label>

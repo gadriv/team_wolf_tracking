@@ -1,12 +1,37 @@
 const form = document.getElementById("activity-form");
 const tableBody = document.getElementById("activity-table");
 const message = document.getElementById("form-message");
+const stravaButton = document.getElementById("strava-login");
+const stravaMessage = document.getElementById("strava-message");
 const summaryNodes = {
   total: document.getElementById("summary-total"),
   minutes: document.getElementById("summary-minutes"),
   athletes: document.getElementById("summary-athletes"),
   favorite: document.getElementById("summary-favorite"),
 };
+
+if (stravaButton && stravaMessage) {
+  stravaButton.addEventListener("click", async () => {
+    stravaButton.disabled = true;
+    stravaMessage.textContent = "Redirigiendo a Strava...";
+    stravaMessage.style.color = "#111";
+
+    try {
+      const response = await fetch("/api/auth/strava/login");
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || "No fue posible iniciar sesión con Strava");
+      }
+
+      const data = await response.json();
+      window.location.href = data.authorize_url;
+    } catch (error) {
+      stravaMessage.textContent = error.message;
+      stravaMessage.style.color = "#dc2626";
+      stravaButton.disabled = false;
+    }
+  });
+}
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();

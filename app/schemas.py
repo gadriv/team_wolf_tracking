@@ -31,3 +31,14 @@ class SummaryResponse(BaseModel):
     total_minutes: int
     unique_athletes: int
     favorite_activity: Optional[str]
+
+
+class StravaAuthStartResponse(BaseModel):
+    authorize_url: str
+    state: str
+
+
+class StravaAuthCallbackResponse(BaseModel):
+    athlete_name: str
+    strava_athlete_id: int
+    access_token_expires_at: datetime
