@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Team Wolf Tracking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="form-panel">
+        <h1>Registro de actividades</h1>
+        <form id="activity-form">
+          <label>Nombre del atleta<input name="athlete_name" required /></label>
+          <label>Tipo de actividad<input name="activity_type" required /></label>
+          <label>Duración (minutos)<input name="duration_minutes" type="number" min="1" required /></label>
+          <label>Nivel de intensidad
+            <select name="intensity_level" required>
+              <option value="Baja">Baja</option>
+              <option value="Media" selected>Media</option>
+              <option value="Alta">Alta</option>
+            </select>
+          </label>
+          <label>Lugar<input name="location" /></label>
+          <label>Fecha<input name="activity_date" type="date" required /></label>
+          <label>Notas<textarea name="notes" rows="3"></textarea></label>
+          <button type="submit">Guardar actividad</button>
+          <p class="form-message" id="form-message"></p>
+        </form>
+      </section>
+
+      <section class="summary-panel">
+        <div class="summary" id="summary">
+          <div>
+            <span class="summary-value" id="summary-total">0</span>
+            <span class="summary-label">Sesiones</span>
+          </div>
+          <div>
+            <span class="summary-value" id="summary-minutes">0</span>
+            <span class="summary-label">Minutos</span>
+          </div>
+          <div>
+            <span class="summary-value" id="summary-athletes">0</span>
+            <span class="summary-label">Atletas</span>
+          </div>
+          <div>
+            <span class="summary-value" id="summary-favorite">-</span>
+            <span class="summary-label">Actividad favorita</span>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Atleta</th>
+                <th>Actividad</th>
+                <th>Duración</th>
+                <th>Intensidad</th>
+                <th>Notas</th>
+              </tr>
+            </thead>
+            <tbody id="activity-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
