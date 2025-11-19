@@ -18,7 +18,7 @@ Aplicación ligera para reemplazar los formularios de Google y centralizar el re
 ## Cómo ejecutar
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate  # En Windows usar .venv\\Scripts\\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
